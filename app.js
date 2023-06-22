@@ -4,16 +4,35 @@ const app = Vue.createApp({
   data() {
     return {
       showBooks: false,
-      title: 'The final Empire',
-      author: 'Brandon Sanderson',
-      age: '45',
+      books: [
+        {
+          title: 'The final Empire',
+          author: 'Brandon Sanderson',
+        },
+        {
+          title: 'The final Empire II',
+          author: 'Brandon Sanderson',
+        },
+        {
+          title: 'The final Empire III',
+          author: 'Brandon Sanderson',
+        }
+      ],
+      x: 0,
+      y: 0,
+      url1: 'https://github.com/',
+      url2: 'https://www.w3schools.com/',
     }
   },
   methods: {
-    changeTitle(title) {
-      this.title = title;
+    handleEvent(e, data) {
+      console.log(e)
+      console.log(data)
     },
-    
+    handleMousemove(e) {
+      this.x = e.offsetX
+      this.y = e.offsetY
+    }
   }
 })
 

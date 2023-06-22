@@ -7,12 +7,27 @@
   <title>Learning Vue</title>
   <script src="https://unpkg.com/vue@3.0.2"></script>
   <script defer src="app.js"></script>
+  <style>
+    .box {
+      background-color: #ddd;
+      width: 400px;
+      margin: 20px;
+      padding: 100px 0;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   
   <h1>Hello Vue :)</h1>
 
   <div id="app">
+    <div>
+      <a v-bind:href="url1">Github</a>
+    </div>
+    <div>
+      <a :href="url2">w3school</a>
+    </div>
     <button @click="showBooks = !showBooks">
       <span v-if="showBooks">Hide books</span>
       <span v-else>Show books</span>
@@ -21,13 +36,21 @@
     <div v-show="showBooks">Currently showing books</div>
 
     <div v-if="showBooks">
-      <p>{{ title }} - {{ author }} - {{ age }}</p>
-  
-      <button v-on:click="age++">Increase age</button>
-      <button v-on:click="age--">Decrease age</button>
-      <button @click="changeTitle('The final Empire II')">Change Title</button>
+      <ul>
+        <li v-for="book in books">
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.author }}</p>
+        </li>
+      </ul>
     </div>
-    
+
+    <br>
+    <!-- mouse event -->
+    <div class="box" @mouseover="handleEvent($event, 5)">mouseover</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMousemove">mousemove: {{ x }} - {{ y }}</div>
+
   </div>
 
 </body>
